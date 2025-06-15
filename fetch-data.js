@@ -22,6 +22,7 @@ async function fetchUserData() {
         html += "</ul>";
 
         // Inject HTML into the container
+        dataContainer.innerHTML = "";
         dataContainer.innerHTML = html;
 
     } catch (e) {
