@@ -29,12 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackDiv.textContent = "Registration successful!"
             feedbackDiv.style.color = "#28a745"
         } else {
-            let result = "";
-            for (let i=0; i < messages.length; i++) {
-                result += messages[i]+"<br>"
-            }
-
-            feedbackDiv.innerHTML = result;
+            feedbackDiv.innerHTML = messages.join("<br>");
             feedbackDiv.style.color = "#dc3545";
         }
 
