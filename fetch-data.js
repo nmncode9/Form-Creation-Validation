@@ -1,6 +1,7 @@
 async function fetchUserData() {
     const apiUrl = "https://jsonplaceholder.typicode.com/users";
     const dataContainer = document.getElementById("api-data");
+    const errorMsg = "Failed to load user data.";
 
     try {
         // Fetch data from the API
@@ -8,7 +9,7 @@ async function fetchUserData() {
         
         // Check if response is OK (status 200-299)
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(errorMsg);
         }
         
         // Parse JSON data
@@ -27,7 +28,7 @@ async function fetchUserData() {
 
     } catch (e) {
         // Display error message
-        dataContainer.textContent = `Failed to fetch user data: ${e.message}`;
+        dataContainer.textContent = errorMsg;
     }
 }
 
