@@ -16,11 +16,12 @@ async function fetchUserData() {
         const users = await response.json();
         
         // Build HTML string with user names
-        let userList = "<ul>";
+        const userList = document.createElement('ul');
         users.forEach(user => {
-            userList += `<li>${user.name}</li>`;
+            const listItem = document.createElement('li');
+            listItem.textContent = user.name;
+            userList.appendChild(listItem);
         });
-        userList += "</ul>";
 
         // Inject HTML into the container
         dataContainer.innerHTML = "";
