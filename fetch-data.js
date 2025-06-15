@@ -16,11 +16,11 @@ async function fetchUserData() {
         const users = await response.json();
         
         // Build HTML string with user names
-        let html = "<ul>";
+        let userList = "<ul>";
         users.forEach(user => {
-            html += `<li>${user.name}</li>`;
+            userList += `<li>${user.name}</li>`;
         });
-        html += "</ul>";
+        userList += "</ul>";
 
         // Inject HTML into the container
         dataContainer.innerHTML = "";
@@ -28,6 +28,7 @@ async function fetchUserData() {
 
     } catch (e) {
         // Display error message
+        dataContainer.innerHTML = "";
         dataContainer.textContent = errorMsg;
     }
 }
