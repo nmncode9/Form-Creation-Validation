@@ -1,0 +1,33 @@
+async function fetchUserData() {
+    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+    const dataContainer = document.getElementById("api-data");
+
+    try {
+        // Fetch data from the API
+        const response = await fetch(apiUrl);
+        
+        // Check if response is OK (status 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // Parse JSON data
+        const users = await response.json();
+        
+        // Build HTML string with user names
+        let html = "<ul>";
+        users.forEach(user => {
+            html += `<li>${user.name}</li>`;
+        });
+        html += "</ul>";
+
+        // Inject HTML into the container
+        dataContainer.innerHTML = html;
+
+    } catch (e) {
+        // Display error message
+        dataContainer.textContent = `Failed to fetch user data: ${e.message}`;
+    }
+}
+
+fetchUserData();
